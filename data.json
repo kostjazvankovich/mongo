@@ -1,0 +1,1666 @@
+db.bookedBalance.insertMany([
+  {
+    "_class": "datev.liqui.backend.model.BookedBalance",
+    "consult": 1001,
+    "client": 1,
+    "clientId": "465224-1551",
+    "clientName": "Darth Vader GmbH & Co. KG",
+    "zmdtId": 0,
+    "saldenList": [
+      {
+        "_class": "datev.liqui.backend.model.Posten",
+        "bezeichnung": "summary",
+        "postenId": {
+          "_class": "datev.liqui.backend.model.PostenId",
+          "postenNr": 16730000,
+          "postenTyp": 0,
+          "postenSubNr": 0
+        },
+        "details": [
+          {
+            "_class": "datev.liqui.backend.model.PostenDetail",
+            "displayId": "1802",
+            "displayText": "Deutsche Bank Nürnberg",
+            "dailyBalances": [
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-01T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-02T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-03T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-04T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-05T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-06T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-07T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-08T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-09T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-10T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-11T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-12T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-13T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-14T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-15T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-16T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-17T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-18T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-19T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-20T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-21T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-22T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-23T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-24T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-25T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-26T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-27T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-28T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-29T00:00:00Z"),
+                "saldoInCent": 240733
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-30T00:00:00Z"),
+                "saldoInCent": 236918
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-31T00:00:00Z"),
+                "saldoInCent": 338804
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-01T00:00:00Z"),
+                "saldoInCent": 306984
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-02T00:00:00Z"),
+                "saldoInCent": 310658
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-03T00:00:00Z"),
+                "saldoInCent": 356518
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-04T00:00:00Z"),
+                "saldoInCent": 354820
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-05T00:00:00Z"),
+                "saldoInCent": 442356
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-06T00:00:00Z"),
+                "saldoInCent": 468192
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-07T00:00:00Z"),
+                "saldoInCent": 469446
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-08T00:00:00Z"),
+                "saldoInCent": 395321
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-09T00:00:00Z"),
+                "saldoInCent": 346396
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-10T00:00:00Z"),
+                "saldoInCent": 505343
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-11T00:00:00Z"),
+                "saldoInCent": 569823
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-12T00:00:00Z"),
+                "saldoInCent": 542174
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-13T00:00:00Z"),
+                "saldoInCent": 598412
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-14T00:00:00Z"),
+                "saldoInCent": 745028
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-15T00:00:00Z"),
+                "saldoInCent": 445078
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-16T00:00:00Z"),
+                "saldoInCent": 463898
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-17T00:00:00Z"),
+                "saldoInCent": 470014
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-18T00:00:00Z"),
+                "saldoInCent": 485464
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-19T00:00:00Z"),
+                "saldoInCent": 485648
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-20T00:00:00Z"),
+                "saldoInCent": 513952
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-21T00:00:00Z"),
+                "saldoInCent": 412802
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-22T00:00:00Z"),
+                "saldoInCent": 560087
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-23T00:00:00Z"),
+                "saldoInCent": 570928
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-24T00:00:00Z"),
+                "saldoInCent": 578956
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-25T00:00:00Z"),
+                "saldoInCent": 180498
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-01T00:00:00Z"),
+                "saldoInCent": 182498
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-02T00:00:00Z"),
+                "saldoInCent": 200550
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-03T00:00:00Z"),
+                "saldoInCent": 258741
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-04T00:00:00Z"),
+                "saldoInCent": 298725
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-05T00:00:00Z"),
+                "saldoInCent": 356027
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-06T00:00:00Z"),
+                "saldoInCent": 375069
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-07T00:00:00Z"),
+                "saldoInCent": 315869
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-08T00:00:00Z"),
+                "saldoInCent": 299999
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-09T00:00:00Z"),
+                "saldoInCent": 324789
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-10T00:00:00Z"),
+                "saldoInCent": 336985
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-11T00:00:00Z"),
+                "saldoInCent": 458961
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-12T00:00:00Z"),
+                "saldoInCent": 555227
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-13T00:00:00Z"),
+                "saldoInCent": 500265
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-14T00:00:00Z"),
+                "saldoInCent": 514717
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-15T00:00:00Z"),
+                "saldoInCent": 521798
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-16T00:00:00Z"),
+                "saldoInCent": 531911
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-17T00:00:00Z"),
+                "saldoInCent": 483172
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-18T00:00:00Z"),
+                "saldoInCent": 482973
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-19T00:00:00Z"),
+                "saldoInCent": 581678
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-20T00:00:00Z"),
+                "saldoInCent": 651089
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-21T00:00:00Z"),
+                "saldoInCent": 751256
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-22T00:00:00Z"),
+                "saldoInCent": 800237
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-23T00:00:00Z"),
+                "saldoInCent": 745289
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-24T00:00:00Z"),
+                "saldoInCent": 651089
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-25T00:00:00Z"),
+                "saldoInCent": 671023
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-26T00:00:00Z"),
+                "saldoInCent": 657034
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-27T00:00:00Z"),
+                "saldoInCent": 388956
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-28T00:00:00Z"),
+                "saldoInCent": 708119
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-29T00:00:00Z"),
+                "saldoInCent": 695195
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-30T00:00:00Z"),
+                "saldoInCent": 655895
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-31T00:00:00Z"),
+                "saldoInCent": 632879
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-01T00:00:00Z"),
+                "saldoInCent": 610025
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-02T00:00:00Z"),
+                "saldoInCent": 600817
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-03T00:00:00Z"),
+                "saldoInCent": 615247
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-04T00:00:00Z"),
+                "saldoInCent": 621869
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-05T00:00:00Z"),
+                "saldoInCent": 589637
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-06T00:00:00Z"),
+                "saldoInCent": 589763
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-07T00:00:00Z"),
+                "saldoInCent": 601717
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-08T00:00:00Z"),
+                "saldoInCent": 658932
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-09T00:00:00Z"),
+                "saldoInCent": 699982
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-10T00:00:00Z"),
+                "saldoInCent": 782369
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-11T00:00:00Z"),
+                "saldoInCent": 843320
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-12T00:00:00Z"),
+                "saldoInCent": 875254
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-13T00:00:00Z"),
+                "saldoInCent": 899999
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-14T00:00:00Z"),
+                "saldoInCent": 1009052
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-15T00:00:00Z"),
+                "saldoInCent": 1000020
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-16T00:00:00Z"),
+                "saldoInCent": 1125117
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-17T00:00:00Z"),
+                "saldoInCent": 1205800
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-18T00:00:00Z"),
+                "saldoInCent": 1253121
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-19T00:00:00Z"),
+                "saldoInCent": 1300411
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-20T00:00:00Z"),
+                "saldoInCent": 1389736
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-21T00:00:00Z"),
+                "saldoInCent": 1456397
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-22T00:00:00Z"),
+                "saldoInCent": 1480063
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-23T00:00:00Z"),
+                "saldoInCent": 1487869
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-24T00:00:00Z"),
+                "saldoInCent": 1512398
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-25T00:00:00Z"),
+                "saldoInCent": 1498769
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-26T00:00:00Z"),
+                "saldoInCent": 1598735
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-27T00:00:00Z"),
+                "saldoInCent": 1598735
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-28T00:00:00Z"),
+                "saldoInCent": 1598735
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-29T00:00:00Z"),
+                "saldoInCent": 1598735
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-30T00:00:00Z"),
+                "saldoInCent": 1598735
+              }
+            ]
+          },
+          {
+            "_class": "datev.liqui.backend.model.PostenDetail",
+            "displayId": "1804",
+            "displayText": "Bank für Sozialwirtschaft",
+            "dailyBalances": [
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-01T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-02T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-03T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-04T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-05T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-06T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-07T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-08T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-09T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-10T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-11T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-12T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-13T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-14T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-15T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-16T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-17T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-18T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-19T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-20T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-21T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-22T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-23T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-24T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-25T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-26T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-27T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-28T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-29T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-30T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-03-31T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-01T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-02T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-03T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-04T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-05T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-06T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-07T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-08T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-09T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-10T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-11T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-12T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-13T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-14T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-15T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-16T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-17T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-18T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-19T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-20T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-21T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-22T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-23T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-24T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-25T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-26T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-27T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-28T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-29T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-04-30T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-01T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-02T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-03T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-04T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-05T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-06T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-07T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-08T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-09T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-10T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-11T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-12T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-13T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-14T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-15T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-16T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-17T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-18T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-19T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-20T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-21T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-22T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-23T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-24T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-25T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-26T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-27T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-28T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-29T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-30T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-31T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-01T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-02T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-03T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-04T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-05T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-06T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-07T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-08T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-09T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-10T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-11T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-12T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-13T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-14T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-15T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-16T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-17T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-18T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-19T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-20T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-21T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-22T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-23T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-24T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-25T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-26T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-27T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-28T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-29T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-07-30T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-08-30T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-08-29T00:00:00Z"),
+                "saldoInCent": 36128
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-09-15T00:00:00Z"),
+                "saldoInCent": 36128
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_class": "datev.liqui.backend.model.Posten",
+        "bezeichnung": "demands",
+        "postenId": {
+          "_class": "datev.liqui.backend.model.PostenId",
+          "postenNr": 15610106,
+          "postenTyp": 0,
+          "postenSubTyp": 0
+        },
+        "details": [
+          {
+            "_class": "datev.liqui.backend.model.PostenDetail",
+            "displayId": "1200",
+            "displayText": "Forderungen aus Lieferungen u.Leistung",
+            "dailyBalances": [
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-14T00:00:00Z"),
+                "saldoInCent": 589110
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-15T00:00:00Z"),
+                "saldoInCent": 589110
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-16T00:00:00Z"),
+                "saldoInCent": 589110
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-17T00:00:00Z"),
+                "saldoInCent": 589110
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-18T00:00:00Z"),
+                "saldoInCent": 589110
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-19T00:00:00Z"),
+                "saldoInCent": 589110
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-20T00:00:00Z"),
+                "saldoInCent": 589110
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-21T00:00:00Z"),
+                "saldoInCent": 589110
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-22T00:00:00Z"),
+                "saldoInCent": 589110
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-23T00:00:00Z"),
+                "saldoInCent": 589110
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-24T00:00:00Z"),
+                "saldoInCent": 589110
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-25T00:00:00Z"),
+                "saldoInCent": 589110
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-26T00:00:00Z"),
+                "saldoInCent": 589110
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-27T00:00:00Z"),
+                "saldoInCent": 589110
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-28T00:00:00Z"),
+                "saldoInCent": 607623
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-29T00:00:00Z"),
+                "saldoInCent": 607623
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-30T00:00:00Z"),
+                "saldoInCent": 607623
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-05-31T00:00:00Z"),
+                "saldoInCent": 607623
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-01T00:00:00Z"),
+                "saldoInCent": 2107623
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-02T00:00:00Z"),
+                "saldoInCent": 2107623
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-03T00:00:00Z"),
+                "saldoInCent": 2107623
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-04T00:00:00Z"),
+                "saldoInCent": 2107623
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-05T00:00:00Z"),
+                "saldoInCent": 2107623
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-06T00:00:00Z"),
+                "saldoInCent": 2297157
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-07T00:00:00Z"),
+                "saldoInCent": 2642978
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-08T00:00:00Z"),
+                "saldoInCent": 2642978
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-09T00:00:00Z"),
+                "saldoInCent": 2642978
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-10T00:00:00Z"),
+                "saldoInCent": 2642978
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-11T00:00:00Z"),
+                "saldoInCent": 2712812
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-12T00:00:00Z"),
+                "saldoInCent": 2712812
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-13T00:00:00Z"),
+                "saldoInCent": 2866934
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-14T00:00:00Z"),
+                "saldoInCent": 2866934
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-15T00:00:00Z"),
+                "saldoInCent": 2066934
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-16T00:00:00Z"),
+                "saldoInCent": 2317003
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-17T00:00:00Z"),
+                "saldoInCent": 2422364
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-18T00:00:00Z"),
+                "saldoInCent": 2422364
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-19T00:00:00Z"),
+                "saldoInCent": 2931524
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-20T00:00:00Z"),
+                "saldoInCent": 3360293
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-21T00:00:00Z"),
+                "saldoInCent": 3495782
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-22T00:00:00Z"),
+                "saldoInCent": 3495782
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-23T00:00:00Z"),
+                "saldoInCent": 3449717
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-24T00:00:00Z"),
+                "saldoInCent": 3629214
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-25T00:00:00Z"),
+                "saldoInCent": 3662852
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-26T00:00:00Z"),
+                "saldoInCent": 3662852
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-27T00:00:00Z"),
+                "saldoInCent": 4015642
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-28T00:00:00Z"),
+                "saldoInCent": 4015642
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-29T00:00:00Z"),
+                "saldoInCent": 4015642
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-30T00:00:00Z"),
+                "saldoInCent": 4015642
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_class": "datev.liqui.backend.model.Posten",
+        "bezeichnung": "debts",
+        "postenId": {
+          "_class": "datev.liqui.backend.model.PostenId",
+          "postenNr": 25411700,
+          "postenTyp": 0,
+          "postenSubTyp": 0
+        },
+        "details": [
+          {
+            "_class": "datev.liqui.backend.model.PostenDetail",
+            "displayId": "3300",
+            "displayText": "Verbindl. aus Lieferungen u. Leistungen",
+            "dailyBalances": [
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-03T00:00:00Z"),
+                "saldoInCent": 47599
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-04T00:00:00Z"),
+                "saldoInCent": 47599
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-05T00:00:00Z"),
+                "saldoInCent": 47599
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-06T00:00:00Z"),
+                "saldoInCent": 1147599
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-07T00:00:00Z"),
+                "saldoInCent": 1442948
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-08T00:00:00Z"),
+                "saldoInCent": 1267948
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-09T00:00:00Z"),
+                "saldoInCent": 1037948
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-10T00:00:00Z"),
+                "saldoInCent": 1041388
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-11T00:00:00Z"),
+                "saldoInCent": 1139563
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-12T00:00:00Z"),
+                "saldoInCent": 1139563
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-13T00:00:00Z"),
+                "saldoInCent": 1377332
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-14T00:00:00Z"),
+                "saldoInCent": 1377332
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-15T00:00:00Z"),
+                "saldoInCent": 1127209
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-16T00:00:00Z"),
+                "saldoInCent": 1127209
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-17T00:00:00Z"),
+                "saldoInCent": 1595741
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-18T00:00:00Z"),
+                "saldoInCent": 1622362
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-19T00:00:00Z"),
+                "saldoInCent": 1981098
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-20T00:00:00Z"),
+                "saldoInCent": 1781098
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-21T00:00:00Z"),
+                "saldoInCent": 1781098
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-22T00:00:00Z"),
+                "saldoInCent": 1905356
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-23T00:00:00Z"),
+                "saldoInCent": 1845356
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-24T00:00:00Z"),
+                "saldoInCent": 2244092
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-25T00:00:00Z"),
+                "saldoInCent": 2244092
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-26T00:00:00Z"),
+                "saldoInCent": 2244092
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-27T00:00:00Z"),
+                "saldoInCent": 2606447
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-28T00:00:00Z"),
+                "saldoInCent": 2606447
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-29T00:00:00Z"),
+                "saldoInCent": 2606447
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-06-30T00:00:00Z"),
+                "saldoInCent": 2606447
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]);
