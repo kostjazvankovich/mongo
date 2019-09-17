@@ -184,7 +184,7 @@ db.runCommand({
                             total: {
                                 $sum: { 
                                     $cond: [
-                                        { $eq: [ "_id.identifier", "debts" ] },
+                                        { $eq: [ "$_id.identifier", "debts" ] },
                                         { "$subtract": [ 0, "$total" ] },
                                         "$total"
                                     ]
