@@ -6,7 +6,7 @@ db.runCommand({
         {$unwind: {path: "$saldenList"}},
         {
             $project: {
-                identifier: "$saldenList.bezeichnung",
+                postenNr: "$saldenList.postenId.postenNr",
                 assets: "$saldenList.details",
             }
         },
@@ -14,7 +14,7 @@ db.runCommand({
         {
             $project: {
                 _id: 0,
-                identifier: 1,
+                postenNr: 1,
                 balances: "$assets.dailyBalances",
                 bank: "$assets.displayText",
             }
@@ -27,7 +27,7 @@ db.runCommand({
         },
         {
             $project:  {
-                identifier: 1,
+                postenNr: 1,
                 bank: 1,
                 day: "$balances.day",
                 value: "$balances.saldoInCent"
@@ -36,7 +36,7 @@ db.runCommand({
         {
             $group: {
                 _id: {
-                    identifier: "$identifier",
+                    postenNr: "$postenNr",
                     day: {
                         $let: {
                             vars: {
@@ -143,8 +143,8 @@ db.runCommand({
         },
         {
             $facet: {
-                funds: [
-                    { $match: {$and: [{"_id.identifier": "summary"}]}},
+                banks: [
+                    { $match: {$or: [{ "_id.postenNr": 16730000 }, { "_id.postenNr": 25210000 }]}},
                     {
                         $project: {
                             _id: 0,
@@ -157,8 +157,8 @@ db.runCommand({
                         $sort: { day: 1 }
                     }
                 ],
-                fundsAndDemands: [
-                    { $match: { $or: [ { "_id.identifier": "summary" }, { "_id.identifier": "demands" } ] } },
+                debts: [
+                    { $match: { $or: [ { "_id.postenNr": 16730000 }, { "_id.postenNr": 25210000 }, { "_id.postenNr": 15610106 } ] } },
                     {
                         $group: {
                             _id: "$_id.day",
@@ -176,15 +176,15 @@ db.runCommand({
                         $sort: { day: 1 }
                     }
                 ],
-                fundsDemandsAndDebts: [
-                    { $match: { $or: [ { "_id.identifier": "summary" }, { "_id.identifier": "demands" }, { "_id.identifier": "debts" } ] } },
+                demands: [
+                    { $match: { $or: [ { "_id.postenNr": 16730000 }, { "_id.postenNr": 25210000 }, { "_id.postenNr": 15610106 }, { "_id.postenNr": 25411700 } ] } },
                     {
                         $group: {
                             _id: "$_id.day",
                             total: {
                                 $sum: { 
                                     $cond: [
-                                        { $eq: [ "$_id.identifier", "debts" ] },
+                                        {$or: [ { $eq: [ "$_id.postenNr", 25411700 ] }, { $eq: [ "$_id.postenNr", 25210000 ] } ]},
                                         { "$subtract": [ 0, "$total" ] },
                                         "$total"
                                     ]
