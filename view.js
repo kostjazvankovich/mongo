@@ -22,7 +22,7 @@ db.runCommand({
         { $unwind: {path: "$balances"} },
         {
             $match: {
-                "balances.day": { "$gte": new Date((new Date()).valueOf() - ( 98 * ( 1000 * 60 * 60 * 24 ) ) ) }
+                "balances.day": { "$gte": new Date((new Date()).valueOf() - ( 84 * ( 1000 * 60 * 60 * 24 ) ) ) }
             }
         },
         {
@@ -37,103 +37,11 @@ db.runCommand({
             $group: {
                 _id: {
                     postenNr: "$postenNr",
-                    day: {
-                        $let: {
-                            vars: {
-                                ninetyEighthDays: new Date(new Date().valueOf() - (98 * ( 1000 * 60 * 60 * 24 ))),
-                                ninetySecondDays: new Date(new Date().valueOf() - (92 * ( 1000 * 60 * 60 * 24 ))),
-                                eightyFifthDays: new Date(new Date().valueOf() - (85 * ( 1000 * 60 * 60 * 24 ))),
-                                seventyEighthDays: new Date(new Date().valueOf() - (78 * ( 1000 * 60 * 60 * 24 ))),
-                                seventyFirstDays: new Date(new Date().valueOf() - (71 * ( 1000 * 60 * 60 * 24 ))),
-                                sixtyFourthDays: new Date( new Date().valueOf() - (64 * ( 1000 * 60 * 60 * 24 ))),
-                                fiftySeventhDays: new Date( new Date().valueOf() - (57 * ( 1000 * 60 * 60 * 24 ))),
-                                fiftyFifthDays: new Date( new Date().valueOf() - (50 * ( 1000 * 60 * 60 * 24 ))),
-                                fortyThirdDays: new Date( new Date().valueOf() - (43 * ( 1000 * 60 * 60 * 24 ))),
-                                thirtySixthDays: new Date( new Date().valueOf() - (36 * ( 1000 * 60 * 60 * 24 ))),
-                                twentyNinthDays: new Date( new Date().valueOf() - (29 * ( 1000 * 60 * 60 * 24 ))),
-                                twentySecondDays: new Date( new Date().valueOf() - (22 * ( 1000 * 60 * 60 * 24 ))),
-                                fifteenDays: new Date( new Date().valueOf() - (15 * ( 1000 * 60 * 60 * 24 ))),
-                                sevenDays: new Date( new Date().valueOf() - (7 * ( 1000 * 60 * 60 * 24 )))
-                            },
-                                in: {
-                                    $cond: [
-                                        {$lt: ["$day", "$$ninetyEighthDays"]},
-                                        "$$ninetyEighthDays",
-                                        {
-                                            $cond: [
-                                                {$lt: ["$day", "$$ninetySecondDays"]},
-                                                "$$ninetySecondDays",
-                                                {
-                                                    $cond: [
-                                                        {$lt: ["$day", "$$eightyFifthDays"]},
-                                                        "$$eightyFifthDays",
-                                                        {
-                                                            $cond: [
-                                                                {$lt: ["$day", "$$seventyEighthDays"]},
-                                                                "$$seventyEighthDays",
-                                                                {
-                                                                    $cond: [
-                                                                        {$lt: ["$day", "$$seventyFirstDays"]},
-                                                                        "$$seventyFirstDays",
-                                                                        {
-                                                                            $cond: [
-                                                                                {$lt: ["$day", "$$sixtyFourthDays"]},
-                                                                                "$$sixtyFourthDays",
-                                                                                {
-                                                                                    $cond: [
-                                                                                        {$lt: ["$day", "$$fiftySeventhDays"]},
-                                                                                        "$$fiftySeventhDays",
-                                                                                        {
-                                                                                            $cond: [
-                                                                                                {$lt: ["$day", "$$fiftyFifthDays"]},
-                                                                                                "$$fiftyFifthDays",
-                                                                                                {
-                                                                                                    $cond: [
-                                                                                                        {$lt: ["$day", "$$fortyThirdDays"]},
-                                                                                                        "$$fortyThirdDays",
-                                                                                                        {
-                                                                                                            $cond: [
-                                                                                                                {$lt: ["$day", "$$thirtySixthDays"]},
-                                                                                                                "$$thirtySixthDays",
-                                                                                                                {
-                                                                                                                    $cond: [
-                                                                                                                        {$lt: ["$day", "$$twentyNinthDays"]},
-                                                                                                                        "$$twentyNinthDays",
-                                                                                                                        {
-                                                                                                                            $cond: [
-                                                                                                                                {$lt: ["$day", "$$twentySecondDays"]},
-                                                                                                                                "$$twentySecondDays",
-                                                                                                                                {
-                                                                                                                                    $cond: [
-                                                                                                                                        {$lt: ["$day", "$$sevenDays"]},
-                                                                                                                                        "$$sevenDays",
-                                                                                                                                        new Date()
-                                                                                                                                    ]
-                                                                                                                                }
-                                                                                                                            ]
-                                                                                                                        }
-                                                                                                                    ]
-                                                                                                                }
-                                                                                                            ]
-                                                                                                        }
-                                                                                                    ]
-                                                                                                }
-                                                                                            ]
-                                                                                        }
-                                                                                    ]
-                                                                                }
-                                                                            ]
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
+                    day: { 
+                        $dateFromParts: {
+                            year: { $year: "$day"},
+                            month: { $month: "$day"},
+                            day: { $dayOfMonth: "$day"}
                         }
                     }
                 },
