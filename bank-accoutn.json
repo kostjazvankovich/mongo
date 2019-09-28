@@ -1,0 +1,28 @@
+db.bankAccount.insertMany([{
+  "_id": "5d8dcd8197a1c751acf779e2",
+  "clientName": "Landspeeder Company Test",
+  "client": 99290,
+  "consult": 465224,
+  "zmdtId": "100",
+  "clientId": "465224-99290",
+  "lastUpdated": "2019-09-27T08:51:13.607Z",
+  "accountList": [
+    {
+      "accountProvider": "bankDefault",
+      "accountStatus": "active",
+      "accountType": "bank",
+      "balance": 7000,
+      "balanceBookingDate": "2019-01-02T23:00:00.000Z",
+      "bankAccountNumber": "111199290",
+      "bankCodeNumber": "37020500",
+      "bankName": "Bank für Sozialwirtschaft",
+      "clientId": "99290",
+      "consultantId": "465224",
+      "creationDate": "2019-05-30T22:00:00.000Z",
+      "currency": "EUR",
+      "accountId": "100000000000065027",
+      "status": "Changed!"
+    }
+  ],
+  "_class": "datev.liqui.accounttransaction.scoop.entities.Client"
+}])
