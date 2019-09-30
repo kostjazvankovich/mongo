@@ -1,3 +1,4 @@
+db.accountBalanceView.drop()
 db.runCommand({
 {
   create: "accountBalanceView",

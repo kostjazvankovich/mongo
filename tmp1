@@ -1,0 +1,53 @@
+Hi Kostja,
+
+hier die beiden Collections. Ist nicht der aktuellste Stand, aber für die Generierung der View sollte das reichen:
+real_zasta: Habe ich mal angehängt, da die Feldmenge noch etwas angestiegen ist.
+
+Für die View reicht es, eine Transaktion pro Tag auszuwählen, da der Endsaldo im Feld 
+
+"booking_date_closing_balance" : 10000.00
+
+steht. Dieses Feld hat für alle Transaktionen dieses Tags und Accounts immer denselben(!) Wert. 
+
+
+
+Die Felder für den JOIN sind:     
+•	clientId
+•	accountId
+
+Minimale Felder für Account
+
+Id                	Die AccountId
+bank_account_number	Kontonummer
+bank_code_number	BLZ
+Iban	IBAN
+currency	Währung
+bank_name	Bankname
+Bic	BIC
+
+Minimale Felder für Balance
+
+Transactions	Balance (API)	Bemerkung
+booking_date	date	
+booking_date_closing_balance	amount	
+
+
+
+Viele Grüße
+
+Gary
+
+
+
+Hintergrund
+Wir wollen die einzelnen Transaktionen speichern, da in der Transaktion der Geschäftspartner (der Zahlende) enthalten ist. 
+Beispiel: 
+A)
+Herr Müller zahlt pro Monat 100.000,00€ (Transactions)
+Herr Müller hat offene Posten in Höhe von 500,00€. 
+Ergebnis: Interessiert nicht.
+
+B)
+Herr Müller zahlt pro Monat 1.000,00€ (Transactions)
+Herr Müller hat offene Posten in Höhe von 50.000,00€. 
+Ergebnis: Den sollte man dringend mal anrufen.

@@ -25,6 +25,7 @@ db.runCommand({
               _id: 0
             }
           }
+
         ],
         as: "balances"
       }
