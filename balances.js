@@ -1,5 +1,5 @@
 db.accountBalanceView.drop()
-db.runCommand({
+db.runCommand(
 {
   create: "accountBalanceView",
   viewOn: "bookedBalance",
@@ -16,33 +16,39 @@ db.runCommand({
       $project: {
         _id: 0,
         postenNr: 1,
-        balances: "$assets.dailyBalances",
-        bank: "$assets.displayText",
-      }
+  balances:  {
+    $let: {
+      vars: { dt: { $subtract: [new Date(), 31536000000]}},
+        in: {
+          $let:
+          {
+            vars: 
+            { 
+              startDate: { $dateFromParts: { year: { $year: "$$dt"}, month: { $month: "$$dt"}, day: { $dayOfMonth: "$$dt"}}}},
+              in: {
+                $filter: 
+                {
+                  input: "$assets.dailyBalances", 
+                  as: "balance", 
+                  cond: { $gte: ["$$balance.day", "$$startDate"]}                    
+                }
+              }
+          }
+        }
+    }
+  },
+  bank: "$assets.displayText",
+}
     },
     { $unwind: {path: "$balances"} },
-    {
-      $project:  {
-        postenNr: 1,
-        bank: 1,
-        startDate: {
-          $let:
-            {
-              vars: { dt: { $subtract: [new Date(), 7257600000]}},
-              in: {
-                $dateFromParts: {
-                  year: { $year: "$$dt"},
-                  month: { $month: "$$dt"},
-                  day: { $dayOfMonth: "$$dt"}
-                }
-              }
-            }
-        },
-        day: "$balances.day",
-        value: "$balances.saldoInCent"
-      }
-    },
-    { $match: { day: { $gte: ISODate("2019-07-01T00:00:00Z") }}},
+{
+      $project:  {
+        postenNr: 1,
+        bank: 1,
+        day: "$balances.day",
+        value: "$balances.saldoInCent"
+      }
+    },
     {
       $group: {
         _id: {
@@ -124,5 +130,4 @@ db.runCommand({
       }
     }
   ]
-}
 })

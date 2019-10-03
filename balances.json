@@ -24,7 +24,7 @@ db.bookedBalance.insertMany([
             "dailyBalances": [
               {
                 "_class": "de.datev.liqui.backend.model.TagesSaldo",
-                "day": ISODate("2019-03-01T00:00:00Z"),
+                "day": ISODate("2019-07-30T00:00:00Z"),
                 "saldoInCent": 240733
               },
               {
@@ -616,7 +616,7 @@ db.bookedBalance.insertMany([
             "dailyBalances": [
               {
                 "_class": "de.datev.liqui.backend.model.TagesSaldo",
-                "day": ISODate("2019-03-01T00:00:00Z"),
+                "day": ISODate("2019-07-30T00:00:00Z"),
                 "saldoInCent": 36128
               },
               {
@@ -1260,6 +1260,11 @@ db.bookedBalance.insertMany([
             "dailyBalances": [
               {
                 "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-07-30T00:00:00Z"),
+                "saldoInCent": 5891100
+              },
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
                 "day": ISODate("2019-05-14T00:00:00Z"),
                 "saldoInCent": 589110
               },
@@ -1517,6 +1522,11 @@ db.bookedBalance.insertMany([
             "displayId": "3300",
             "displayText": "Verbindl. aus Lieferungen u. Leistungen",
             "dailyBalances": [
+              {
+                "_class": "de.datev.liqui.backend.model.TagesSaldo",
+                "day": ISODate("2019-07-30T00:00:00Z"),
+                "saldoInCent": 89000000
+              },
               {
                 "_class": "de.datev.liqui.backend.model.TagesSaldo",
                 "day": ISODate("2019-06-03T00:00:00Z"),
