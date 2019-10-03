@@ -6,7 +6,7 @@ db.runCommand({
     { $unwind: "$accountList"},
     { $lookup: 
       {
-        from: "transaction",
+        from: "transactionView",
         let: { clientId: "$clientId", accountId: "$accountList.accountId"},
         pipeline: [
           { $match:
@@ -38,8 +38,6 @@ db.runCommand({
         bankCodeNumber: "$accountList.bankCodeNumber",
         bankName: "$accountList.bankName",
         currency: "$accountList.currency",
-        iban: { $arrayElemAt: ["$balances.businessPartnerBankAccountIdentification", 0] },
-        bic: { $arrayElemAt: ["$balances.businessPartnerBankIdentification", 0] },
         "balances.bookingDate": 1,
         "balances.amount": 1
       }
