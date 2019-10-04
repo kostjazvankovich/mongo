@@ -25,6 +25,7 @@ db.runCommand(
       $project: {
         clientId: 1,
         accountId: 1,
+        amount: 1,
         bookingDate: 1
       }
     }
