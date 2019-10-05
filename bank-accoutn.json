@@ -1,3 +1,4 @@
+db.bankAccount.drop()
 db.bankAccount.insertMany([{
   "_id": "5d8dcd8197a1c751acf779e2",
   "clientName": "Landspeeder Company Test",
@@ -21,6 +22,38 @@ db.bankAccount.insertMany([{
       "creationDate": "2019-05-30T22:00:00.000Z",
       "currency": "EUR",
       "accountId": "100000000000065027",
+      "status": "Changed!"
+    },
+    {
+      "accountProvider": "bankDefault",
+      "accountStatus": "active",
+      "accountType": "bank",
+      "balance": 7000,
+      "balanceBookingDate": "2019-01-02T23:00:00.000Z",
+      "bankAccountNumber": "111199291",
+      "bankCodeNumber": "37020501",
+      "bankName": "Bank1",
+      "clientId": "99290",
+      "consultantId": "465224",
+      "creationDate": "2019-05-30T22:00:00.000Z",
+      "currency": "EUR",
+      "accountId": "100000000000065028",
+      "status": "Changed!"
+    },
+    {
+      "accountProvider": "bankDefault",
+      "accountStatus": "active",
+      "accountType": "bank",
+      "balance": 7000,
+      "balanceBookingDate": "2019-01-02T23:00:00.000Z",
+      "bankAccountNumber": "111199291",
+      "bankCodeNumber": "37020501",
+      "bankName": "Bank1",
+      "clientId": "99290",
+      "consultantId": "465224",
+      "creationDate": "2019-05-30T22:00:00.000Z",
+      "currency": "EUR",
+      "accountId": "100000000000065028",
       "status": "Changed!"
     }
   ],

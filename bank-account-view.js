@@ -4,10 +4,25 @@ db.runCommand({
   viewOn: "bankAccount",
   pipeline: [
     { $unwind: "$accountList"},
+    {
+      $group: {
+        _id: {
+          clientId: "$clientId",
+          accountId: "$accountList.accountId"
+        }
+      }
+    },
+    { 
+      $project: {
+        _id: 0,
+        clientId: "$_id.clientId",
+        accountId: "$_id.accountId"
+      }
+    },
     { $lookup: 
       {
         from: "transactionView",
-        let: { clientId: "$clientId", accountId: "$accountList.accountId"},
+        let: { clientId: "$clientId", accountId: "$accountId"},
         pipeline: [
           { $match:
             { $expr:
@@ -22,7 +37,7 @@ db.runCommand({
           { 
             $project: 
             { 
-              _id: 0
+              _id: 0,
             }
           }
 
@@ -31,19 +46,28 @@ db.runCommand({
       }
     },
     { 
-      $project: 
-      {
-        _id: 0,
-        bankAccountNumber: "$accountList.bankAccountNumber",
-        bankCodeNumber: "$accountList.bankCodeNumber",
-        bankName: "$accountList.bankName",
-        currency: "$accountList.currency",
-        "balances.bookingDate": 1,
-        "balances.amount": 1
+      $unwind: "$balances"
+    },
+    {
+      $group: {
+        _id: {
+          day: "$balances.bookingDate",
+          clientId: "$balances.ClientId",
+          accountId: "$balances.accountId"
+        },
+        total: { $sum: "$balances.amount"}
       }
     },
     {
-      $sort: { "balances.bookingDate": 1}
+      $project: {
+        _id: 0,
+        accountId: "$_id.accountId",
+        date: "$_id.day",
+        total: 1,
+      }
+    },
+    {
+      $sort: { day: 1}
     }
   ]
 })

@@ -77,5 +77,31 @@ db.transaction.insertMany([
     "unstructuredInformation": "1234 Re. Nr. 1234 Test-Kunde 00018",
     "valueDate": "2019-01-02T23:00:00.000Z",
     "_class": "datev.liqui.accounttransaction.scoop.entities.TransactionEntity"
+  },
+  {
+    "_id": "5d8dce0097a1c74bc4c5a565",
+    "clientId": "465224-99290",
+    "accountId": "100000000000065027",
+    "accountType": "bank",
+    "amount": 7,
+    "bankTransactionCode": "177",
+    "bookingDate": ISODate("2019-09-23T23:00:00.000Z"),
+    "bookingText": "Test-Kunde",
+    "businessPartnerBankAccountIdentification": "DE53760501010001234569",
+    "businessPartnerBankIdentification": "GENODEF1S12",
+    "businessPartnerName": "Test-Kunde.",
+    "currency": "EUR",
+    "customerReference": "NONREF",
+    "dpksKey": "2019010100122",
+    "endToEndIdentification": "1904220910-0000001",
+    "transactionId": "76867029696588",
+    "isAdjustingEntry": false,
+    "isPotentialDuplicate": false,
+    "primanota": "993000",
+    "status": "bookable",
+    "swiftTransactionCode": "NTRF",
+    "unstructuredInformation": "1234 Re. Nr. 1234 Test-Kunde 00018",
+    "valueDate": "2019-01-02T23:00:00.000Z",
+    "_class": "datev.liqui.accounttransaction.scoop.entities.TransactionEntity"
   }
 ])
