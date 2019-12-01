@@ -7,43 +7,25 @@ db.runCommand(
     {$unwind: {path: "$saldenList"}},
     {
       $project: {
+        clientId: "clientId",
         postenNr: "$saldenList.postenId.postenNr",
         assets: "$saldenList.details",
       }
     },
     { $unwind: {path: "$assets"} },
-    {
-      $project: {
-        _id: 0,
-        postenNr: 1,
-  balances:  {
-    $let: {
-      vars: { dt: { $subtract: [new Date(), 31536000000]}},
-        in: {
-          $let:
-          {
-            vars: 
-            { 
-              startDate: { $dateFromParts: { year: { $year: "$$dt"}, month: { $month: "$$dt"}, day: { $dayOfMonth: "$$dt"}}}},
-              in: {
-                $filter: 
-                {
-                  input: "$assets.dailyBalances", 
-                  as: "balance", 
-                  cond: { $gte: ["$$balance.day", "$$startDate"]}                    
-                }
-              }
-          }
-        }
-    }
-  },
+    {
+  $project: {
+  id: 0,
+    clientId:1,
+  postenNr: 1,
   bank: "$assets.displayText",
-}
-    },
+  }},
+    
     { $unwind: {path: "$balances"} },
 {
       $project:  {
         postenNr: 1,
+        clientId: 1,
         bank: 1,
         day: "$balances.day",
         value: "$balances.saldoInCent"
@@ -52,6 +34,7 @@ db.runCommand(
     {
       $group: {
         _id: {
+  clientId: "$clientId",
           postenNr: "$postenNr",
           day: {
             $dateFromParts: {
@@ -70,8 +53,22 @@ db.runCommand(
         banks: [
           { $match: {$or: [{ "_id.postenNr": 16730000 }, { "_id.postenNr": 25210000 }]}},
           {
+            $group: {
+              _id: "$_id.day",
+  posten: { $addToSet: "$_id.postenNr"},
+              total: {
+                $sum: {
+                  $cond: [
+                    { $eq: [ "$_id.postenNr", 25210000 ] },
+                    { "$subtract": [ 0, "$total" ] },
+                    "$total"
+                  ]
+                }
+              },
+          {
             $project: {
               _id: 0,
+  posten: 1,
               banks: 1,
               day: "$_id.day",
               total: 1,
@@ -85,15 +82,24 @@ db.runCommand(
           { $match: { $or: [ { "_id.postenNr": 16730000 }, { "_id.postenNr": 25210000 }, { "_id.postenNr": 15610106 } ] } },
           {
             $group: {
-              _id: "$_id.day",
-              total: { $sum: "$total"}
-            }
-          },
+              _id: "$_id.day"
+  posten: { $addToSet: "$_id.postenNr"},
+              total: {
+                $sum: {
+                  $cond: [
+                    { $eq: [ "$_id.postenNr", 25210000 ] },
+                    { "$subtract": [ 0, "$total" ] },
+                    "$total"
+                  ]
+                }
+              },
           {
             $project: {
               _id: 0,
-              day: "$_id",
-              total: 1
+  posten: 1,
+              banks: 1,
+              day: "$_id.day",
+              total: 1,
             }
           },
           {
@@ -105,6 +111,7 @@ db.runCommand(
           {
             $group: {
               _id: "$_id.day",
+  posten: { $addToSet: "$_id.postenNr"},
               total: {
                 $sum: {
                   $cond: [
@@ -118,6 +125,7 @@ db.runCommand(
           },
           {
             $project: {
+  posten:1,
               _id: 0,
               day: "$_id",
               total: 1
