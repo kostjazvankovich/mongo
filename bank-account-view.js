@@ -1,73 +1,59 @@
 db.bankAccountView.drop()
-db.runCommand({
-  create: "bankAccountView",
-  viewOn: "bankAccount",
-  pipeline: [
+db.runCommand(
+{
+    create: "bankAccountView",
+    viewOn: "client",
+    pipeline: [
     { $unwind: "$accountList"},
     {
-      $group: {
-        _id: {
-          clientId: "$clientId",
-          accountId: "$accountList.accountId"
+        $group: {
+            _id: {
+                clientId: "$clientId"
+            }
         }
-      }
     },
-    { 
-      $project: {
-        _id: 0,
-        clientId: "$_id.clientId",
-        accountId: "$_id.accountId"
-      }
+    {
+        $project: {
+            _id: 0,
+            clientId: "$_id.clientId"
+        }
     },
-    { $lookup: 
-      {
-        from: "transactionView",
-        let: { clientId: "$clientId", accountId: "$accountId"},
-        pipeline: [
-          { $match:
-            { $expr:
-              { $and:
-                [
-                  { $eq: [ "$clientId", "$$clientId"] },
-                  { $eq: [ "$accountId", "$$accountId"] }
-                ]
-              }
+    { $lookup:
+            {
+                from: "transactionView",
+                let: { clientId: "$clientId"},
+                pipeline: [
+                    { $match:
+                            { $expr:
+                                    { $and:
+                                            [
+                                                { $eq: [ "$clientId", "$$clientId"] }
+                                            ]
+                                    }
+                            }
+                    },
+                    {
+                        $project:
+                            {
+                                _id: 0,
+                            }
+                    }
+                ],
+                as: "balances"
             }
-          },
-          { 
-            $project: 
-            { 
-              _id: 0,
-            }
-          }
-
-        ],
-        as: "balances"
-      }
-    },
-    { 
-      $unwind: "$balances"
     },
     {
-      $group: {
-        _id: {
-          day: "$balances.bookingDate",
-          clientId: "$balances.ClientId",
-          accountId: "$balances.accountId"
-        },
-        total: { $sum: "$balances.amount"}
-      }
+        $unwind: "$balances"
     },
     {
-      $project: {
-        _id: 0,
-        accountId: "$_id.accountId",
-        date: "$_id.day",
-        total: 1,
-      }
+        $project: {
+            _id: 0,
+            clientId: "$balances.clientId",
+            date: "$balances.bookingDate",
+            total: "$balances.bookingDateClosingBalance"
+        }
     },
     {
-      $sort: { day: 1}
+        $sort: { date: 1}
     }
-  ]
-})
+]})
