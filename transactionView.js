@@ -1,93 +1,59 @@
-db.transactionView.drop()
-db.runCommand({
-    create: "transactionView",
-    viewOn: "Transactions",
+db.bankAccountView.drop()
+db.runCommand(
+{
+    create: "bankAccountView",
+    viewOn: "client",
     pipeline: [
-        {
-            $sort:{ "clientId": 1, "accountId": 1, "bookingDate": 1}
-        },
-        {
-            $group:
-            {
-                _id:
-                {
-                    clientId: "$clientId",
-                    accountId: "$accountId",
-                    bookingDate: "$bookingDate"
-                },
-                lastBookingDate: { $last: "$bookingDate"},
-                bookingDateClosingBalance: { $last: "$bookingDateClosingBalance"}
-            }
-        },
-        {
-            $project:
-            {
-                clientId: "$_id.clientId",
-                accountId: "$_id.accountId",
-                bookingDate:
-                {
-                    $cond: [ {
-                        $gte:
-                            [
-                                "$_id.bookingDate",
-                                {
-                                    $let:
-                                        {
-                                            vars: { startDate: { $subtract: ["$lastBookingDate", 1209600000]}},
-                                            in: "$$startDate"
-                                        }
-                                }
-                            ]
-                    }, "$_id.bookingDate", { $subtract: ["$lastBookingDate", 1209600000]} ]
-                },
-                bookingDateClosingBalance: "$bookingDateClosingBalance"
-            }
-        },
-        {
-            $sort:{ "clientId": 1, "accountId": 1, "bookingDate": 1, "_id.bookingDate": 1}
-        },
-        {
-            $group:
-            {
-                _id:
-                {
-                    clientId: "$clientId",
-                    accountId: "$accountId",
-                    bookingDate: "$bookingDate"
-                },
-                bookingDateClosingBalance:
-                {
-                    $last: "$bookingDateClosingBalance"
-                }
-            }
-        },
-        {
-            $sort:{ "_id.clientId": 1, "_id.accountId": 1, "_id.bookingDate": 1}
-        },
-        {
-            $group:
-            {
-                _id:
-                {
-                    clientId: "$_id.clientId",
-                    bookingDate: "$_id.bookingDate"
-                },
-                bookingDateClosingBalance:
-                {
-                    $sum: "$bookingDateClosingBalance"
-                }
-            }
-        },
-        {
-            $sort:{ "_id.clientId": 1, "_id.bookingDate": 1}
-        },
-        {
-            $project:
-            {
-                _id: 0,
-                clientId: "$_id.clientId",
-                bookingDate: "$_id.bookingDate",
-                bookingDateClosingBalance: "$bookingDateClosingBalance"
+    { $unwind: "$accountList"},
+    {
+        $group: {
+            _id: {
+                clientId: "$clientId"
             }
         }
-]});
+    },
+    {
+        $project: {
+            _id: 0,
+            clientId: "$_id.clientId"
+        }
+    },
+    { $lookup:
+            {
+                from: "transactionView",
+                let: { clientId: "$clientId"},
+                pipeline: [
+                    { $match:
+                            { $expr:
+                                    { $and:
+                                            [
+                                                { $eq: [ "$clientId", "$$clientId"] }
+                                            ]
+                                    }
+                            }
+                    },
+                    {
+                        $project:
+                            {
+                                _id: 0,
+                            }
+                    }
+                ],
+                as: "balances"
+            }
+    },
+    {
+        $unwind: "$balances"
+    },
+    {
+        $project: {
+            _id: 0,
+            clientId: "$balances.clientId",
+            date: "$balances.bookingDate",
+            total: "$balances.bookingDateClosingBalance"
+        }
+    },
+    {
+        $sort: { date: 1}
+    }
+]})
