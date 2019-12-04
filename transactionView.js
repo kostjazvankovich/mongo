@@ -3,91 +3,37 @@ db.runCommand({
     create: "transactionView",
     viewOn: "Transactions",
     pipeline: [
+      { 
+        $facet: 
         {
-            $sort:{ "clientId": 1, "accountId": 1, "bookingDate": 1}
-        },
-        {
-            $group:
+          "lastActiveTransactions" : [
             {
+              $sort:{ "clientId": 1, "accountId": 1, "bookingDate": 1}
+            },
+            {
+              $group:
+              {
                 _id:
                 {
-                    clientId: "$clientId",
-                    accountId: "$accountId",
-                    bookingDate: "$bookingDate"
+                  clientId: "$clientId",
+                  accountId: "$accountId",
                 },
                 lastBookingDate: { $last: "$bookingDate"},
                 bookingDateClosingBalance: { $last: "$bookingDateClosingBalance"}
-            }
-        },
-        {
-            $project:
+              }
+            },
             {
+              $project:
+              {
+                _id: 0,
+                bookingDate: "$lastBookingDate",
                 clientId: "$_id.clientId",
                 accountId: "$_id.accountId",
-                bookingDate:
-                {
-                    $cond: [ {
-                        $gte:
-                            [
-                                "$_id.bookingDate",
-                                {
-                                    $let:
-                                        {
-                                            vars: { startDate: { $subtract: ["$lastBookingDate", 1209600000]}},
-                                            in: "$$startDate"
-                                        }
-                                }
-                            ]
-                    }, "$_id.bookingDate", { $subtract: ["$lastBookingDate", 1209600000]} ]
-                },
                 bookingDateClosingBalance: "$bookingDateClosingBalance"
-            }
-        },
-        {
-            $sort:{ "clientId": 1, "accountId": 1, "bookingDate": 1, "_id.bookingDate": 1}
-        },
-        {
-            $group:
+              }
+            },
             {
-                _id:
-                {
-                    clientId: "$clientId",
-                    accountId: "$accountId",
-                    bookingDate: "$bookingDate"
-                },
-                bookingDateClosingBalance:
-                {
-                    $last: "$bookingDateClosingBalance"
-                }
-            }
-        },
-        {
-            $sort:{ "_id.clientId": 1, "_id.accountId": 1, "_id.bookingDate": 1}
-        },
-        {
-            $group:
-            {
-                _id:
-                {
-                    clientId: "$_id.clientId",
-                    bookingDate: "$_id.bookingDate"
-                },
-                bookingDateClosingBalance:
-                {
-                    $sum: "$bookingDateClosingBalance"
-                }
-            }
-        },
-        {
-            $sort:{ "_id.clientId": 1, "_id.bookingDate": 1}
-        },
-        {
-            $project:
-            {
-                _id: 0,
-                clientId: "$_id.clientId",
-                bookingDate: "$_id.bookingDate",
-                bookingDateClosingBalance: "$bookingDateClosingBalance"
-            }
-        }
+              $sort:{ "clientId": 1, "accountId": 1, "bookingDate": 1}
+            }]
+        }}
 ]});
