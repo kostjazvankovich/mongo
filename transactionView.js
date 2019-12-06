@@ -64,5 +64,16 @@ db.runCommand({
         },
         {
             $sort:{ "clientId": 1, "accountId": 1, "bookingDate": 1}
+        }, 
+      {
+        $facet: 
+        {
+          "lastBookingTransaction": [
+            {
+              $sort: { "startDate": -1 }
+            },
+            { $limit: 1 }
+          ]
         }
+      }
 ]});
