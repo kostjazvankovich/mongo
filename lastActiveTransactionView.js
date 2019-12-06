@@ -10,21 +10,23 @@ db.runCommand({
             $group:
                 {
                     _id:
-                    {
-                        clientId: "$clientId"
-                    },
+                        {
+                            clientId: "$clientId",
+                            accountId: "$accountId"
+                        },
                     lastBookingDate: { $last: "$bookingDate"},
                     bookingDateClosingBalance: { $last: "$bookingDateClosingBalance"}
                 }
         },
         {
             $project:
-            {
-                _id: 0,
-                clientId: "$_id.clientId",
-                lastBookingDate: "$lastBookingDate",
-                bookingDateClosingBalance: "$bookingDateClosingBalance"
-            }
+                {
+                    _id: 0,
+                    clientId: "$_id.clientId",
+                    accountId: "$_id.accountId",
+                    lastBookingDate: "$lastBookingDate",
+                    bookingDateClosingBalance: "$bookingDateClosingBalance"
+                }
         },
         {
             $sort:{ "clientId": 1, "accountId": 1, "lastBookingDate": 1}
