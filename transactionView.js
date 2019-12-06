@@ -5,37 +5,36 @@ db.runCommand({
     pipeline: [
         {
             $lookup:
-            {
-                from: "lastActiveTransactionView",
-                let: { bookingDate: "$bookingDate", accountId: "$accountId", clientId: "$clientId" },
-                pipeline: [
-                    { $match:
-                        { $expr:
-                            {  $and: [
-                                { $eq: [ "$accountId",  "$$accountId" ] },
-                                { $eq: [ "$clientId",  "$$clientId" ] },
-                                {
-                                    $gte:
-                                        [
-                                            "$$bookingDate",
-                                            {
-                                                $let:
+                {
+                    from: "lastActiveTransactionView",
+                    let: { bookingDate: "$bookingDate", accountId: "$accountId", clientId: "$clientId" },
+                    pipeline: [
+                        { $match:
+                                { $expr:
+                                        {  $and: [
+                                                { $eq: [ "$clientId",  "$$clientId" ] },
                                                 {
-                                                    vars:
-                                                        {
-                                                            startDate: {$subtract: ["$lastBookingDate", 1209600000]}
-                                                        }, in: "$$startDate"
-                                                }
-                                            }
-                                        ]
-                                }]
-                            }
-                        }
-                    },
-                    { $project: { _id: 0 } }
-                ],
-                as: "activeTransactions"
-            }
+                                                    $gte:
+                                                        [
+                                                            "$$bookingDate",
+                                                            {
+                                                                $let:
+                                                                    {
+                                                                        vars:
+                                                                            {
+                                                                                startDate: {$subtract: ["$lastBookingDate", 1209600000]}
+                                                                            }, in: "$$startDate"
+                                                                    }
+                                                            }
+                                                        ]
+                                                }]
+                                        }
+                                }
+                        },
+                        { $project: { _id: 0 } }
+                    ],
+                    as: "activeTransactions"
+                }
         },
         {
             $unwind: "$activeTransactions"
@@ -44,12 +43,12 @@ db.runCommand({
             $group:
                 {
                     _id:
-                    {
-                        clientId: "$clientId",
-                        accountId: "$accountId",
-                        bookingDate: "$bookingDate",
-                        bookingDateClosingBalance: "$bookingDateClosingBalance"
-                    },
+                        {
+                            clientId: "$clientId",
+                            accountId: "$accountId",
+                            bookingDate: "$bookingDate",
+                            bookingDateClosingBalance: "$bookingDateClosingBalance"
+                        },
                 }
         },
         {
@@ -64,16 +63,58 @@ db.runCommand({
         },
         {
             $sort:{ "clientId": 1, "accountId": 1, "bookingDate": 1}
-        }, 
+        },
+        {
+            $group:
+            {
+                _id:
+                {
+                    clientId: "$clientId",
+                    accountId: "$accountId"
+                },
+                startDate: { $first: "$bookingDate"},
+                endDate: { $last: "$bookingDate"},
+                bookingBalances: { $push: { bookingDate: "$bookingDate", bookingDateClosingBalance: "$bookingDateClosingBalance" }}
+            }
+        },
+        {
+            $project:
+            {
+                _id: 0,
+                clientId: "$_id.clientId",
+                accountId: "$_id.accountId",
+                startDate: "$startDate",
+                endDate: "$endDate",
+                bookingBalances: "$bookingBalances"
+            }
+        },
       {
         $facet: 
         {
-          "lastBookingTransaction": [
+          "lastTransaction": [
             {
-              $sort: { "startDate": -1 }
+              $sort: { "endDate": -1 }
             },
-            { $limit: 1 }
+            { $limit: 1 },
+            { 
+              $project: 
+              {
+                bookingDate: "$endDate",
+                startDate: "$startDate"
+              }
+            
+            }
+          ],
+          "lastTransactions": [
+            $project:
+            {
+                _id: 0,
+                clientId: "$_id.clientId",
+                accountId: "$_id.accountId",
+                startDate: "$startDate",
+                endDate: "$endDate",
+                bookingBalances: "$bookingBalances"
           ]
         }
       }
-]});
+    ]});

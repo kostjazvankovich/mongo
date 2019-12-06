@@ -11,8 +11,7 @@ db.runCommand({
                 {
                     _id:
                     {
-                        clientId: "$clientId",
-                        accountId: "$accountId",
+                        clientId: "$clientId"
                     },
                     lastBookingDate: { $last: "$bookingDate"},
                     bookingDateClosingBalance: { $last: "$bookingDateClosingBalance"}
@@ -23,7 +22,6 @@ db.runCommand({
             {
                 _id: 0,
                 clientId: "$_id.clientId",
-                accountId: "$_id.accountId",
                 lastBookingDate: "$lastBookingDate",
                 bookingDateClosingBalance: "$bookingDateClosingBalance"
             }
