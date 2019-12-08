@@ -1,6 +1,6 @@
 db.lastActiveTransactionView.drop()
 db.runCommand({
-    create: "lastActiveTransactionView",
+    create: "activeTransactionView",
     viewOn: "Transactions",
     pipeline: [
         {
@@ -14,7 +14,7 @@ db.runCommand({
                             clientId: "$clientId",
                             accountId: "$accountId"
                         },
-                    lastBookingDate: { $last: "$bookingDate"},
+                    bookingDate: { $last: "$bookingDate"},
                     bookingDateClosingBalance: { $last: "$bookingDateClosingBalance"}
                 }
         },
@@ -24,11 +24,11 @@ db.runCommand({
                     _id: 0,
                     clientId: "$_id.clientId",
                     accountId: "$_id.accountId",
-                    lastBookingDate: "$lastBookingDate",
+                    bookingDate: "$bookingDate",
                     bookingDateClosingBalance: "$bookingDateClosingBalance"
                 }
         },
         {
-            $sort:{ "clientId": 1, "accountId": 1, "lastBookingDate": 1}
+            $sort:{ "clientId": 1, "accountId": 1, "bookingDate": 1}
         }
     ]});

@@ -6,29 +6,16 @@ db.runCommand({
         {
             $lookup:
                 {
-                    from: "lastActiveTransactionView",
+                    from: "activeTransactionView",
                     let: { bookingDate: "$bookingDate", accountId: "$accountId", clientId: "$clientId" },
                     pipeline: [
                         { $match:
                                 { $expr:
-                                        {  $and: [
-                                                { $eq: [ "$clientId",  "$$clientId" ] },
-                                                { $eq: [ "$accountId",  "$$accountId" ] },
-                                                {
-                                                    $gte:
-                                                        [
-                                                            "$$bookingDate",
-                                                            {
-                                                                $let:
-                                                                    {
-                                                                        vars:
-                                                                            {
-                                                                                startDate: {$subtract: ["$lastBookingDate", 1209600000]}
-                                                                            }, in: "$$startDate"
-                                                                    }
-                                                            }
-                                                        ]
-                                                }]
+                                        {  $and: 
+                                           [
+                                             { $eq: [ "$clientId",  "$$clientId" ] },
+                                             { $eq: [ "$accountId",  "$$accountId" ] },
+                                           ]
                                         }
                                 }
                         },
@@ -145,34 +132,55 @@ db.runCommand({
         { $unwind: "$lastTransactions" },
         {
             $project:
+          {
+            bookingDate: "$rangeTransactions.bookingDate",
+            clientId: "$lastTransactions.clientId",
+            accountId: "$lastTransactions.accountId",
+            startBookingDate: "$lastTransactions.startBookingDate",
+            endBookingDate: "$lastTransactions.endBookingDate",
+            bookingDateClosingBalance:
             {
-                bookingDate: "$rangeTransactions.bookingDate",
-                startBookingDate: "$lastTransactions.startBookingDate",
-                endBookingDate: "$lastTransactions.endBookingDate",
-                bookingDateClosingBalance:
+              $cond: [
                 {
-                    $cond: [
-                        {
-                            $gte:  ["$rangeTransactions.bookingDate", "$lastTransactions.startBookingDate"],
-                        },
-                        {
-                            $arrayElemAt: [
-                                {
-                                    $filter: {
-                                    "input": "$lastTransactions.bookingBalances",
-                                    "as": "balance",
-                                    "cond": {
-                                        "$and": [
-                                            {"$lte": ["$rangeTransactions.bookingDate", "$$balance.bookingDate"]}
-                                        ]
-                                    }}
-                                }, -1
-                            ]
-                        },
-                        { $arrayElemAt: [ "$lastTransactions.bookingBalances", 0 ] }
-                    ]
+                  $and: [
+                    {
+                      $gte:  ["$rangeTransactions.bookingDate", "$lastTransactions.startBookingDate"]
+                    },
+                    {
+                      $lte:  ["$rangeTransactions.bookingDate", "$lastTransactions.endBookingDate"]
+                    }
+                  ]
+                },
+                {
+                  $arrayElemAt: [
+                    {
+                      $filter: {
+                        "input": "$lastTransactions.bookingBalances",
+                        "as": "balance",
+                        "cond": {
+                          "$and": [
+                            {"$gte": ["$rangeTransactions.bookingDate", "$$balance.bookingDate"]}
+                          ]
+                        }}
+                    }, -1
+                  ]
+                },
+                {
+                  $cond: [
+                    {
+                      $gt:  ["$rangeTransactions.bookingDate", "$lastTransactions.endBookingDate"]
+                    },
+                    {
+                      $arrayElemAt: [ "$lastTransactions.bookingBalances", -1 ] 
+                    },
+                    {
+                      $arrayElemAt: [ "$lastTransactions.bookingBalances", 0 ] 
+                    }
+                  ]
                 }
+              ]
             }
+          }
         },
         {
             $sort:{ "bookingDate": 1}
