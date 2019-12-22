@@ -122,8 +122,17 @@
 						_id: 0,
 						clientId: "$_id.clientId",
 						bookingBalances: "$bookingBalances",
-						startBookingDate: { $arrayElemAt: [ "$bookingBalances", -1 ] },
-						endBookingDate: { $arrayElemAt: [ "$bookingBalances", 0 ] }
+						startBookingBalance: { $arrayElemAt: [ "$bookingBalances", -1 ] },
+						endBookingBalance: { $arrayElemAt: [ "$bookingBalances", 0 ] }
+					}
+				},
+				{
+					$project: 
+					{
+						clientId: 1,
+						bookingBalances: 1,
+						startBookingDate: "$startBookingBalance.bookingDate",
+						endBookingDate: "$endBookingBalance.bookingDate"
 					}
 				}
 			  ],
@@ -143,6 +152,12 @@
 		},
 		{$project: {transactions:{$setUnion:['$rangeTransactions','$lastTransactions']}}},
 		{$unwind: '$transactions'},
-		{$replaceRoot: { newRoot: "$transactions" }}
+		{$replaceRoot: { newRoot: "$transactions" }},
+            {
+              $group: 
+              {
+                _id: {clientId: "$clientId"}
+              }
+            }
 		]
 	})
