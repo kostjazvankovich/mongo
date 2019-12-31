@@ -104,7 +104,7 @@ db.runCommand(
                       { $eq: [{ $setIsSubset: [ ["$accountId"], "$$accounts" ] }, false]}
                     ]
                   }
-                },
+                 },
               },
               { $sort: {"bookingDate": -1} },
               { $limit: 1 },
@@ -112,10 +112,7 @@ db.runCommand(
                 $project:
                   {
                     _id: 0,
-                    clientId: 1,
-                    bookingDate: 1,
                     bookingDateClosingBalance: 1,
-                    accounts: ["$accountId"]
                   }
               }],
             as: "transaction"
@@ -125,17 +122,20 @@ db.runCommand(
         $project:
           {
             clientId: 1,
-            // transactions: { $setUnion: ["$transactions", "$transaction"]},
             transactions: {
-              $reduce: {
-                input: "$transactions",
-                initialValue: [],
-                in: { $concatArrays : ["$$value", [
-                    {
-                      bookingDate: "$$this.bookingDate",
-                      bookingDateClosingBalance: { $add: "$$this.bookingDateClosingBalance"}
-                    }]]}
-              }
+              $let: { 
+                vars: { accountBalance: { $ifNull: [ { $arrayElemAt: ["$transaction", 0]}, 0]}},
+                  in: {
+                    $reduce: {
+                      input: "$transactions",
+                      initialValue: [],
+                        in: 
+                      { $concatArrays : ["$$value", [
+                        {
+                          bookingDate: "$$this.bookingDate",
+                          bookingDateClosingBalance: { $add: ["$$this.bookingDateClosingBalance", "$$accountBalance"]}
+                        }]]}
+                    }}}
             }
           }
       },
@@ -161,17 +161,17 @@ db.runCommand(
           }
       },
       {
-        $sort: {"clientId": 1,  "bookingDate": -1}
+        $sort: {"clientId": 1,  "bookingDate": 1}
       },
-      {
-        $group:
-         {
-           _id:
-             {
-               clientId: "$clientId",
-             },
-           bookingDateClosingBalance: { $sum: "$bookingDateClosingBalance" },
-         }
-      }
+      // {
+      //   $group:
+      //    {
+      //      _id:
+      //        {
+      //          clientId: "$clientId",
+      //        },
+      //      bookingDateClosingBalance: { $sum: "$bookingDateClosingBalance" },
+      //    }
+      // }
     ]
   })
