@@ -196,8 +196,12 @@ db.runCommand(
                         { $let: { 
                           vars: { rangeBookingDate: { $subtract: ["$$lastBookingDate", "$$this"]}
                                 },
-                            in: { $arrayElemAt: [{ $filter: { 
-                              input: "$$transactions", cond: { $eq: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, 0]}}
+                            in: { $ifNull: [{ $arrayElemAt: [{ $filter: { 
+                              input: "$$transactions", cond: { $eq: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, 0]},
+                                          { $ifNull: [{ $arrayElemAt: [{ $filter: { 
+                              input: "$$transactions", cond: { $lt: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, -1]},
+                                                     { $arrayElemAt: [{ $filter: { 
+                              input: "$$transactions", cond: { $gt: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, 0]}]}]}}
                         }
                       ]]}
                   }
