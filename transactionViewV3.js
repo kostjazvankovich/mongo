@@ -163,15 +163,48 @@ db.runCommand(
       {
         $sort: {"clientId": 1,  "bookingDate": 1}
       },
-      // {
-      //   $group:
-      //    {
-      //      _id:
-      //        {
-      //          clientId: "$clientId",
-      //        },
-      //      bookingDateClosingBalance: { $sum: "$bookingDateClosingBalance" },
-      //    }
-      // }
+      {
+        $group:
+         {
+           _id:
+             {
+               clientId: "$clientId",
+             },
+           lastBookingDate: {$last: "$bookingDate"},
+           lastBookingDateClosingBalance: { $last: "$bookingDateClosingBalance" },
+           transactions: { $push: { bookingDate: "$bookingDate", bookingDateClosingBalance: "$bookingDateClosingBalance"}}
+         }
+      },
+      {
+        $project:
+        {
+          _id: 0,
+          clientId: "$_id.clientId",
+          transactions: 
+          {
+            $let: {
+              vars: { transactions: "$transactions",
+                      dateRange: { $range:[0, 15*1000*60*60*24, 1000*60*60*24] }, 
+                      lastBookingDate: "$lastBookingDate",
+                      lastBookingDateClosingBalance: "lastBookingDateClosingBalance"
+                    },
+                in: {
+                  $reduce: {
+                    input: "$$dateRange",
+                    initialValue: [],
+                      in: { $concatArrays: ["$$value", [ 
+                        { $let: { 
+                          vars: { rangeBookingDate: { $subtract: ["$$lastBookingDate", "$$this"]}
+                                },
+                            in: { $arrayElemAt: [{ $filter: { 
+                              input: "$$transactions", cond: { $eq: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, 0]}}
+                        }
+                      ]]}
+                  }
+                }
+            }
+          }
+        }
+      }
     ]
   })
