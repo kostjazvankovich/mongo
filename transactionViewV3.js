@@ -194,15 +194,19 @@ db.runCommand(
                     initialValue: [],
                       in: { $concatArrays: ["$$value", [ 
                         { $let: { 
-                          vars: { rangeBookingDate: { $subtract: ["$$lastBookingDate", "$$this"]}
-                                },
-                            in: { $ifNull: [{ $arrayElemAt: [{ $filter: { 
-                              input: "$$transactions", cond: { $eq: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, 0]},
-                                          { $ifNull: [{ $arrayElemAt: [{ $filter: { 
-                              input: "$$transactions", cond: { $lt: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, -1]},
-                                                     { $arrayElemAt: [{ $filter: { 
-                              input: "$$transactions", cond: { $gt: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, 0]}]}]}}
-                        }
+                          vars: { 
+                            balance: { 
+                              $let: { 
+                              vars: { rangeBookingDate: { $subtract: ["$$lastBookingDate", "$$this"]}},
+                                in: { $ifNull: [{ $arrayElemAt: [{ $filter: { 
+                                  input: "$$transactions", cond: { $eq: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, 0]},
+                                                { $ifNull: [{ $arrayElemAt: [{ $filter: { 
+                                                  input: "$$transactions", cond: { $lt: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, -1]},
+                                                            { $arrayElemAt: [{ $filter: { 
+                                                              input: "$$transactions", cond: { $gt: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, 0]}]}]}}}},
+                            in: { bookingDate: "$$dateRange", 
+                                  bookingDateClosingBalance: "$$balance.bookingDateClosingBalance"}
+                        }}
                       ]]}
                   }
                 }
