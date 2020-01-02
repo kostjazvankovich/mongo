@@ -1,7 +1,7 @@
-db.transactionViewV2.drop()
+db.transactionView.drop()
 db.runCommand(
   {
-    create: "transactionViewV2",
+    create: "transactionView",
     viewOn: "client",
     pipeline: [
       {
@@ -46,7 +46,7 @@ db.runCommand(
                 bookingDate: "$_id.bookingDate",
               },
             bookingDateClosingBalance: { $sum: "$_id.bookingDateClosingBalance" },
-            accounts: { $addToSet: "$_id.accountId"}
+            accounts: { $addToSet: { accountId: "$_id.accountId", bookingDate: "$_id.bookingDate", bookingDateClosingBalance: "$_id.bookingDateClosingBalance" }}
           }
       },
       {
@@ -77,19 +77,15 @@ db.runCommand(
             transactions: { $slice: ["$transactions", 14]},
           }
       },
+
       {
-        $project:
-          {
-            clientId: 1,
-            transactions: 1,
-            accounts: {
-              $reduce: {
-                input: "$transactions.accounts",
-                initialValue: [],
-                in: { "$setUnion": ["$$value", "$$this"] }
-              }
-            }
-          }
+        $unwind: "$transactions"
+      },
+      {
+        $replaceRoot: { newRoot: "$transactions" }
+      },
+      {
+        $sort: { clientId: 1, bookingDate: 1 }
       },
       {
         $lookup:
@@ -101,10 +97,10 @@ db.runCommand(
                   $expr: {
                     $and: [
                       { $eq: [ "$clientId",  "$$clientId" ] },
-                      { $eq: [{ $setIsSubset: [ ["$accountId"], "$$accounts" ] }, false]}
+                      { $eq: [{ $setIsSubset: [ ["$accountId"], "$$accounts.accountId" ] }, false]}
                     ]
                   }
-                 },
+                },
               },
               { $sort: {"bookingDate": -1} },
               { $limit: 1 },
@@ -122,97 +118,91 @@ db.runCommand(
         $project:
           {
             clientId: 1,
-            transactions: {
-              $let: { 
-                vars: { accountBalance: { $ifNull: [ { $arrayElemAt: ["$transaction", 0]}, 0]}},
-                  in: {
-                    $reduce: {
-                      input: "$transactions",
-                      initialValue: [],
-                        in: 
-                      { $concatArrays : ["$$value", [
-                        {
-                          bookingDate: "$$this.bookingDate",
-                          bookingDateClosingBalance: { $add: ["$$this.bookingDateClosingBalance", "$$accountBalance"]}
-                        }]]}
-                    }}}
-            }
+            bookingDate: 1,
+            bookingDateClosingBalance: { $add: ["$bookingDateClosingBalance", {  $ifNull: [{$arrayElemAt: ["$transaction.bookingDateClosingBalance", 0]}, 0]}]}
           }
       },
-      { $unwind: "$transactions" },
+      {
+        $sort: { clientId: 1, bookingDate: 1}
+      },
       {
         $group:
           {
             _id:
               {
                 clientId: "$clientId",
-                bookingDate: "$transactions.bookingDate"
               },
-            bookingDateClosingBalance: { $sum: "$transactions.bookingDateClosingBalance" },
+            lastBookingDate: { $last: "$bookingDate" },
+            lastBookingDateClosingBalance: { $last: "$bookingDateClosingBalance" },
+            transactions: { $push: { bookingDate: "$bookingDate", bookingDateClosingBalance: "$bookingDateClosingBalance"}}
           }
       },
       {
         $project:
           {
             _id: 0,
-            clientId:  "$_id.clientId",
-            bookingDate: "$_id.bookingDate",
-            bookingDateClosingBalance: 1,
-          }
-      },
-      {
-        $sort: {"clientId": 1,  "bookingDate": 1}
-      },
-      {
-        $group:
-         {
-           _id:
-             {
-               clientId: "$clientId",
-             },
-           lastBookingDate: {$last: "$bookingDate"},
-           lastBookingDateClosingBalance: { $last: "$bookingDateClosingBalance" },
-           transactions: { $push: { bookingDate: "$bookingDate", bookingDateClosingBalance: "$bookingDateClosingBalance"}}
-         }
-      },
-      {
-        $project:
-        {
-          _id: 0,
-          clientId: "$_id.clientId",
-          transactions: 
-          {
-            $let: {
-              vars: { transactions: "$transactions",
-                      dateRange: { $range:[0, 15*1000*60*60*24, 1000*60*60*24] }, 
-                      lastBookingDate: "$lastBookingDate",
-                      lastBookingDateClosingBalance: "lastBookingDateClosingBalance"
-                    },
-                in: {
-                  $reduce: {
-                    input: "$$dateRange",
-                    initialValue: [],
-                      in: { $concatArrays: ["$$value", [ 
-                        { $let: { 
-                          vars: { 
-                            balance: { 
-                              $let: { 
+            clientId: "$_id.clientId",
+            transactions:
+              {
+                $let: {
+                  vars: { transactions: "$transactions",
+                    dateRange: { $range:[0, 15*1000*60*60*24, 1000*60*60*24] },
+                    lastBookingDate: "$lastBookingDate",
+                    lastBookingDateClosingBalance: "lastBookingDateClosingBalance"
+                  },
+                  in: {
+                    $reduce: {
+                      input: "$$dateRange",
+                      initialValue: [],
+                      in: { $concatArrays: ["$$value", [
+                          { $let: {
                               vars: { rangeBookingDate: { $subtract: ["$$lastBookingDate", "$$this"]}},
-                                in: { $ifNull: [{ $arrayElemAt: [{ $filter: { 
-                                  input: "$$transactions", cond: { $eq: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, 0]},
-                                                { $ifNull: [{ $arrayElemAt: [{ $filter: { 
-                                                  input: "$$transactions", cond: { $lt: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, -1]},
-                                                            { $arrayElemAt: [{ $filter: { 
-                                                              input: "$$transactions", cond: { $gt: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, 0]}]}]}}}},
-                            in: { bookingDate: "$$dateRange", 
-                                  bookingDateClosingBalance: "$$balance.bookingDateClosingBalance"}
-                        }}
-                      ]]}
+                              in: { $let: {
+                                  vars: {
+                                    balance: {
+                                      $let: {
+                                        vars: { },
+                                        in: { $ifNull: [{ $arrayElemAt: [{ $filter: {
+                                                input: "$$transactions", cond: { $eq: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, 0]},
+                                            { $ifNull: [{ $arrayElemAt: [{ $filter: {
+                                                    input: "$$transactions", cond: { $lt: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, -1]},
+                                                { $arrayElemAt: [{ $filter: {
+                                                      input: "$$transactions", cond: { $gt: ["$$this.bookingDate", "$$rangeBookingDate"]}}}, 0]}]}]}}}},
+                                  in: {
+                                    bookingDate: "$$rangeBookingDate",
+                                    bookingDateClosingBalance: "$$balance.bookingDateClosingBalance"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]]}
+                    }
                   }
                 }
-            }
+              }
           }
+      },
+      {
+        $unwind: "$transactions"
+      },
+      {
+        $replaceRoot: { newRoot:
+            {
+              clientId: "$clientId",
+              bookingDate: "$transactions.bookingDate",
+              total: {$divide:[
+                  {$subtract:[
+                      {$multiply:['$transactions.bookingDateClosingBalance',100]},
+                      {$mod:[{$multiply:['$transactions.bookingDateClosingBalance',100]}, 1]}
+                    ]},
+                  100
+                ]}
+            }
         }
+      },
+      {
+        $sort: { clientId: 1, bookingDate: 1 }
       }
     ]
   })
